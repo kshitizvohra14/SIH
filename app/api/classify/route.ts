@@ -1,5 +1,28 @@
 import { type NextRequest, NextResponse } from "next/server"
 
+// Simple static knowledge base (you can expand this or fetch from FastAPI/Wikipedia)
+const breedInfo: Record<
+  string,
+  { origin?: string; description: string; milk_yield?: string }
+> = {
+  Gir_cow: {
+    origin: "Gujarat, India",
+    description: "Gir cows are known for their distinctive horns, resilience, and high milk yield.",
+    milk_yield: "12–15 liters/day",
+  },
+  Murrah_buffalo: {
+    origin: "Haryana, India",
+    description: "Murrah buffaloes are prized for their rich, high-fat milk and adaptability.",
+    milk_yield: "20–25 liters/day",
+  },
+  Red_Sindhi_cow: {
+    origin: "Sindh region, Pakistan/India",
+    description: "Red Sindhi cows are hardy dairy cattle known for their reddish-brown color and adaptability.",
+    milk_yield: "8–12 liters/day",
+  },
+  // 👆 Add more as needed
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
@@ -9,69 +32,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No image file provided" }, { status: 400 })
     }
 
-    // Validate file type
-    if (!file.type.startsWith("image/")) {
-      return NextResponse.json({ error: "Invalid file type. Please upload an image." }, { status: 400 })
+    // Send to FastAPI backend
+    const modelResponse = await fetch("http://localhost:8000/predict", {
+      method: "POST",
+      body: formData, // Pass the FormData directly
+    })
+
+    if (!modelResponse.ok) {
+      const errorData = await modelResponse.json()
+      return NextResponse.json({ error: errorData.error || "Backend error" }, { status: 500 })
     }
 
-    // Validate file size (10MB limit)
-    if (file.size > 10 * 1024 * 1024) {
-      return NextResponse.json({ error: "File size too large. Maximum 10MB allowed." }, { status: 400 })
-    }
+    const result = await modelResponse.json()
 
-    // Convert file to buffer for processing
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
+    // Normalize + enrich with extra info
+    const breedName = result.label || result.breed
+    const info = breedInfo[breedName] || { description: "No data available" }
 
-    // TODO: Replace this section with your actual ML model integration
-    // Example integrations:
-
-    // Option 1: Local model server
-    // const modelResponse = await fetch('http://localhost:8000/predict', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/octet-stream' },
-    //   body: buffer
-    // })
-
-    // Option 2: Cloud ML service (e.g., AWS SageMaker, Google AI Platform)
-    // const modelResponse = await fetch('YOUR_MODEL_ENDPOINT', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': `Bearer ${process.env.ML_API_KEY}`,
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     image: buffer.toString('base64'),
-    //     // Add any other parameters your model needs
-    //   })
-    // })
-
-    // Option 3: Custom ML service
-    // const modelResponse = await callYourMLModel(buffer)
-
-    // For now, simulate the response structure your model should return
-    // Replace this with actual model call
-    const mockResponse = {
-      predictions: [
-        { breed: "Holstein Friesian", confidence: 0.92 },
-        { breed: "Jersey", confidence: 0.15 },
-        { breed: "Angus", confidence: 0.08 },
-      ],
-      processing_time: 1.2,
-    }
-
-    // Format response to match frontend expectations
-    const result = {
-      breed: mockResponse.predictions[0].breed,
-      confidence: mockResponse.predictions[0].confidence * 100,
-      alternatives: mockResponse.predictions.slice(1).map((pred) => ({
-        breed: pred.breed,
-        confidence: pred.confidence * 100,
-      })),
-      processingTime: mockResponse.processing_time,
-    }
-
-    return NextResponse.json(result)
+    return NextResponse.json({
+      breed: breedName,
+      confidence: (result.confidence || 0) * 100,
+      alternatives: result.alternatives || [],
+      info,
+      processingTime: result.processing_time || undefined,
+    })
   } catch (error) {
     console.error("Classification error:", error)
     return NextResponse.json({ error: "Failed to process image. Please try again." }, { status: 500 })
