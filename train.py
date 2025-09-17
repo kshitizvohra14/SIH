@@ -1,4 +1,8 @@
 import tensorflow as tf
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.layers import GlobalAveragePooling2D, Dense, Dropout, BatchNormalization
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras import layers, models
@@ -54,7 +58,7 @@ model.compile(optimizer="adam",
 # -----------------------------
 # Step 3: Training
 # -----------------------------
-EPOCHS = 50
+EPOCHS = 80
 
 history = model.fit(
     train_generator,

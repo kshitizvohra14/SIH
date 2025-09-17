@@ -1,11 +1,11 @@
 from icrawler.builtin import GoogleImageCrawler
 
 breeds = [
-    "Gir cow",
-    "Sahiwal cow",
-    "Murrah buffalo",
-    "Tharparkar cow",
-    "Red Sindhi cow"
+    "banni buffalo",
+    "bhadwari buffalo",
+    "dharwadi buffalo",
+    "jafarabadi buffalo",
+    "amritmahal cow",
 ]
 
 for breed in breeds:

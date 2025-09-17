@@ -1,0 +1,72 @@
+{
+  "Gir_cow": {
+    "name": "Gir",
+    "species": "Cattle",
+    "origin": "Gujarat (Kathiawar peninsula)",
+    "primary_use": "Milk production",
+    "characteristics": "Medium to large size, red/white skin with spots, long curving horns, known for high milk yield and heat tolerance."
+  },
+  "Murrah_buffalo": {
+    "name": "Murrah",
+    "species": "Buffalo",
+    "origin": "Haryana, Punjab, Delhi, parts of Western UP",
+    "primary_use": "Milk production",
+    "characteristics": "Jet black, tightly curved horns, heavy built, most popular dairy buffalo breed in India."
+  },
+  "Red_Sindhi_cow": {
+    "name": "Red Sindhi",
+    "species": "Cattle",
+    "origin": "Sindh region (now in Pakistan), also raised in India",
+    "primary_use": "Milk production",
+    "characteristics": "Reddish-brown, medium build, hardy and adaptable, known for good lactation in varying climates."
+  },
+  "Sahiwal_cow": {
+    "name": "Sahiwal",
+    "species": "Cattle",
+    "origin": "Punjab (Sahiwal district, now in Pakistan)",
+    "primary_use": "Milk production",
+    "characteristics": "Reddish dun, loose skin, large udder, docile temperament, one of the best dairy breeds of India."
+  },
+  "Tharparkar_cow": {
+    "name": "Tharparkar",
+    "species": "Cattle",
+    "origin": "Thar Desert (Rajasthan, India & Sindh, Pakistan)",
+    "primary_use": "Dual purpose (milk and draught)",
+    "characteristics": "White/grey coat, hardy in arid conditions, moderate milk yield, good for drought-prone areas."
+  },
+  "amritmahal_cow": {
+    "name": "Amrit Mahal",
+    "species": "Cattle",
+    "origin": "Karnataka (Chitradurga, Tumkur, Hassan districts)",
+    "primary_use": "Draught power (military and agricultural)",
+    "characteristics": "Grey/white, powerful build, endurance and speed, historically used in armies."
+  },
+  "banni_buffalo": {
+    "name": "Banni",
+    "species": "Buffalo",
+    "origin": "Kutch region, Gujarat",
+    "primary_use": "Milk production",
+    "characteristics": "Adapted to harsh arid environment, mostly black, disease resistant, known for night grazing."
+  },
+  "bhadwari_buffalo": {
+    "name": "Bhadawari",
+    "species": "Buffalo",
+    "origin": "Bhind & Agra districts (UP & MP border)",
+    "primary_use": "Milk with high butterfat",
+    "characteristics": "Copper-colored skin with black coat, milk fat 6–12%, hardy in drought areas."
+  },
+  "dharwadi_buffalo": {
+    "name": "Dharwadi",
+    "species": "Buffalo",
+    "origin": "Dharwad district, Karnataka",
+    "primary_use": "Milk production",
+    "characteristics": "Medium-sized, black coat, well adapted to local climate, moderate milk yield."
+  },
+  "jafarabadi_buffalo": {
+    "name": "Jafarabadi",
+    "species": "Buffalo",
+    "origin": "Junagadh, Gujarat",
+    "primary_use": "Milk and draught",
+    "characteristics": "Massive size, long flat drooping horns, black skin, hardy and high milk yield."
+  }
+}

@@ -15,7 +15,7 @@ with open("class_indices.json", "r") as f:
 class_names = {v: k for k, v in class_indices.items()}
 
 # Path to test folder
-test_folder = "d:/SIH/test"
+test_folder = "d:/SIH/test2"
 
 for img_name in os.listdir(test_folder):
     img_path = os.path.join(test_folder, img_name)
