@@ -1,0 +1,158 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to vibrant emerald green theme for AGRI AI */
+  --background: #ffffff; /* Clean white background */
+  --foreground: #1f2937; /* Dark gray text for readability */
+  --card: #f1f5f9; /* Light gray cards for subtle contrast */
+  --card-foreground: #475569; /* Medium gray card text */
+  --popover: #ffffff; /* White popovers */
+  --popover-foreground: #1f2937; /* Dark gray popover text */
+  --primary: #059669; /* Vibrant emerald green primary */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #10b981; /* Bright emerald secondary */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #f8fafc; /* Very light gray muted backgrounds */
+  --muted-foreground: #1f2937; /* Dark text on muted */
+  --accent: #6366f1; /* Purple accent for highlights */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #dc2626; /* Red for errors */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #e5e7eb; /* Light gray borders */
+  --input: #f9fafb; /* Very light gray input backgrounds */
+  --ring: #10b981; /* Bright emerald focus rings */
+  --chart-1: #059669; /* Primary emerald chart color */
+  --chart-2: #10b981; /* Secondary emerald chart color */
+  --chart-3: #6366f1; /* Purple tertiary chart color */
+  --chart-4: #dc2626; /* Red alert chart color */
+  --chart-5: #fbbf24; /* Yellow highlight chart color */
+  --radius: 0.75rem; /* Slightly more rounded corners */
+  --sidebar: #f1f5f9; /* Light gray sidebar */
+  --sidebar-foreground: #1f2937; /* Dark sidebar text */
+  --sidebar-primary: #059669; /* Emerald sidebar primary */
+  --sidebar-primary-foreground: #ffffff; /* White text on sidebar primary */
+  --sidebar-accent: #10b981; /* Bright emerald sidebar accent */
+  --sidebar-accent-foreground: #ffffff; /* White text on sidebar accent */
+  --sidebar-border: #e5e7eb; /* Light gray sidebar borders */
+  --sidebar-ring: #10b981; /* Bright emerald sidebar focus rings */
+}
+
+.dark {
+  --background: #0f172a; /* Dark slate background */
+  --foreground: #f1f5f9; /* Light gray text */
+  --card: #1e293b; /* Dark slate cards */
+  --card-foreground: #f1f5f9; /* Light gray card text */
+  --popover: #1e293b; /* Dark slate popovers */
+  --popover-foreground: #f1f5f9; /* Light gray popover text */
+  --primary: #10b981; /* Bright emerald primary in dark mode */
+  --primary-foreground: #0f172a; /* Dark text on primary */
+  --secondary: #334155; /* Medium slate secondary */
+  --secondary-foreground: #f1f5f9; /* Light text on secondary */
+  --muted: #334155; /* Medium slate muted */
+  --muted-foreground: #94a3b8; /* Light slate muted text */
+  --accent: #8b5cf6; /* Purple accent in dark mode */
+  --accent-foreground: #f1f5f9; /* Light text on accent */
+  --destructive: #ef4444; /* Bright red for errors */
+  --destructive-foreground: #f1f5f9; /* Light text on destructive */
+  --border: #334155; /* Medium slate borders */
+  --input: #334155; /* Medium slate input backgrounds */
+  --ring: #10b981; /* Bright emerald focus rings */
+  --chart-1: #10b981; /* Bright emerald chart color */
+  --chart-2: #8b5cf6; /* Purple chart color */
+  --chart-3: #06b6d4; /* Cyan chart color */
+  --chart-4: #ef4444; /* Red chart color */
+  --chart-5: #f59e0b; /* Orange chart color */
+  --sidebar: #1e293b; /* Dark slate sidebar */
+  --sidebar-foreground: #f1f5f9; /* Light sidebar text */
+  --sidebar-primary: #10b981; /* Bright emerald sidebar primary */
+  --sidebar-primary-foreground: #0f172a; /* Dark text on sidebar primary */
+  --sidebar-accent: #334155; /* Medium slate sidebar accent */
+  --sidebar-accent-foreground: #f1f5f9; /* Light text on sidebar accent */
+  --sidebar-border: #334155; /* Medium slate sidebar borders */
+  --sidebar-ring: #10b981; /* Bright emerald sidebar focus rings */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom animations and gradients for eye-catching effects */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
