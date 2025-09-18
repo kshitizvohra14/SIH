@@ -35,7 +35,7 @@ Frontend Setup
 cd app
 npm install   # or pnpm install
 npm run dev
-👉 Open http://localhost:3000 in your browser(as it is note deployed).
+👉 Open http://localhost:3000 in your browser(as it is not deployed yet).
 3️⃣ Backend / ML Setup
 python -m venv venv
 source venv/bin/activate   # on Linux/Mac
